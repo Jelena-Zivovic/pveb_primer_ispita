@@ -1,0 +1,54 @@
+<form [formGroup]="form" (ngSubmit)="save(form.value)">
+
+    <label>Name:</label><br/>
+    <input type="text" formControlName="naziv" />
+
+    <br/><br/>
+
+    <label>Description:</label><br/>
+    <textarea formControlName="opis"></textarea>
+
+    <br/><br/>
+
+    <label>Importance:</label><br/>
+    <input type="radio" value="1" formControlName="vaznost" /> 1
+    <input type="radio" value="2" formControlName="vaznost" /> 2
+    <input type="radio" value="3" formControlName="vaznost" /> 3
+
+    <br/><br/>
+
+    <label>
+        Step 1:
+        <input type="text" formControlName="korak1" />
+    </label>
+    <br/>
+    <label>
+        Step 2:
+        <input type="text" formControlName="korak2" />
+    </label>
+    <br/>
+    <label>
+        Step 3:
+        <input type="text" formControlName="korak3" />
+    </label>
+    <br/>
+    <label>
+        Step 4:
+        <input type="text" formControlName="korak4" />
+    </label>
+    <br/>
+    <label>
+        Step 5:
+        <input type="text" formControlName="korak5" />
+    </label>
+    <br/><br/>
+
+    <p id="greska" [style.color]="'red'" [style.display]="'none'">
+
+    </p>
+    <br/><br/>
+
+    <button type="submit">Save</button>
+    <button [routerLink]="['/']">Close</button>
+
+</form>

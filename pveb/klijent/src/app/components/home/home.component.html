@@ -1,0 +1,45 @@
+<div>
+    <label>importance:</label>
+    <select (change)="filterByImportance($event)">
+        <option value="all"> --all-- </option>
+        <option value="maloVazan"> malo vazan </option>
+        <option value="umerenoVazan"> umereno vazan </option>
+        <option value="vazan">  vazan </option>
+    </select>
+    <br/>
+    <label>complexity:</label>
+    <select (change)="filterByComplexity($event)">
+        <option value="all"> --all-- </option>
+        <option value="jednostavan"> jednostavan </option>
+        <option value="umerenoTezak"> umereno tezak </option>
+        <option value="tezak">  tezak </option>
+    </select>
+</div>
+
+<div id="mainContainer">
+    <h3 *ngFor="let goal of getGoals()"
+        (click)="showInfo(goal._id)"
+        [vaznost]="goal.vaznost"
+        appImportance>
+        {{ goal.naziv }}
+        
+        <div [id]="goal._id"
+             [style.display]="'none'">
+           
+            Informacije:<br/>
+            opis: {{ getInfo().opis }} <br/>
+            vaznost: {{ getInfo().vaznost }}
+
+            <br/><br/>
+            Koraci: <br/>
+            <p *ngFor="let korak of goal.koraci">
+                {{korak.redniBroj}}. {{ korak.opis }}
+            </p>
+
+        </div>
+    </h3>
+</div>
+
+<button [routerLink]="['/add-goal']">Add goal</button>
+
+
